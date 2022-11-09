@@ -1,4 +1,4 @@
 # 073145.github.io
 
-Theme by:
+v2 Theme by:
 https://github.com/cotes2020/jekyll-theme-chirpy
