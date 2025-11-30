@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Computational physicist, systems architect & creative technologist">
+    <title>Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        header {
+            margin-bottom: 4rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(0, 255, 100, 0.1);
+            border: 1px solid rgba(0, 255, 100, 0.3);
+            border-radius: 3px;
+            font-size: 0.9rem;
+            color: #0f0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        h2:hover {
+            color: #0ff;
+        }
+
+        h2::before {
+            content: '> ';
+            color: #0ff;
+            margin-right: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(0deg);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid #666;
+            transition: transform 0.3s;
+        }
+
+        h2.collapsed::after {
+            transform: translateY(-50%) rotate(-90deg);
+        }
+
+        .content {
+            padding-left: 1.5rem;
+            max-height: 5000px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+        }
+
+        .content.collapsed {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .domain-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #222;
+            padding: 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .domain-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .domain-card:hover::before {
+            left: 100%;
+        }
+
+        .domain-card:hover {
+            border-color: #0ff;
+            background: rgba(0, 255, 255, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+        }
+
+        .domain-title {
+            color: #0ff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .domain-items {
+            font-size: 0.85rem;
+            color: #999;
+            line-height: 1.5;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #1a1a1a;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .service-list li:hover {
+            padding-left: 1rem;
+            color: #0ff;
+            border-left: 2px solid #0ff;
+        }
+
+        .service-list strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-links a {
+            color: #0ff;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .contact-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #0f0;
+            transition: width 0.3s;
+        }
+
+        .contact-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-links a:hover {
+            color: #0f0;
+        }
+
+        footer {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .project-placeholder, .writing-placeholder {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed #333;
+            border-radius: 4px;
+            text-align: center;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .domain-grid { grid-template-columns: 1fr; }
+            h2::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="background"></canvas>
+    
+    <div class="container">
+        <header>
+            <h1>[Your Name]</h1>
+            <p class="tagline">Computational physicist, systems architect & creative technologist</p>
+            <span class="status">● Available for projects</span>
+        </header>
+
+        <section>
+            <h2 onclick="toggleSection(this)">About</h2>
+            <div class="content">
+                <p>I work at the intersection of computational science, distributed systems, and creative technology—building tools, simulations, and experiences that span from quantum algorithms to federated networks, from digital twins to generative audiovisual systems.</p>
+                <p style="margin-top: 1rem;">My practice combines rigorous technical development with experimental approaches to data, media, and emergent systems. Currently available for freelance work, technical writing, and collaborative projects.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 onclick="toggleSection(this)">Expertise</h2>
+            <div class="content">
+                <div class="domain-grid">
+                    <div class="domain-card">
+                        <div class="domain-title">Computational Science</div>
+                        <div class="domain-items">Physics simulation, mathematical modeling, quantum computing, photonics, bioinformatics</div>
+                    </div>
+                    
+                    <div class="domain-card">
+                        <div class="domain-title">AI & Evolutionary Systems</div>
+                        <div class="domain-items">Machine learning, genetic algorithms, evolutionary computation, big data analytics, digital twins</div>
+                    </div>
+                    
+                    <div class="domain-card">
+                        <div class="domain-title">Distributed Computing</div>
+                        <div class="domain-items">Federated networks, edge computing, ubiquitous computing, IoT architectures</div>
+                    </div>
+                    
+                    <div class="domain-card">
+                        <div class="domain-title">Security & Governance</div>
+                        <div class="domain-items">Cryptography, information security, privacy engineering, ethical governance frameworks</div>
+                    </div>
+                    
+                    <div class="domain-card">
+                        <div class="domain-title">Electronics & Automation</div>
+                        <div class="domain-items">Electrical engineering, embedded systems, automation, computer engineering</div>
+                    </div>
+                    
+                    <div class="domain-card">
+                        <div class="domain-title">Creative Technology</div>
+                        <div class="domain-items">Live coding, generative systems, experimental music, sound design, cymatics, procedural generation</div>
+                    </div>
+                    
+                    <div class="domain-card">
+                        <div class="domain-title">Audiovisual Production</div>
+                        <div class="domain-items">VFX, 3D modeling, motion design, post-production, photography, cinema</div>
+                    </div>
+                    
+                    <div class="domain-card">
+                        <div class="domain-title">Data Science</div>
+                        <div class="domain-items">Statistical analysis, visualization, pipeline development, computational modeling</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 onclick="toggleSection(this)">Works</h2>
+            <div class="content">
+                <p>Selected projects demonstrating applied research, systems development, and creative implementations.</p>
+                <div class="project-placeholder">
+                    Projects will appear here
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 onclick="toggleSection(this)">Writing</h2>
+            <div class="content">
+                <p>Technical articles, essays, and documentation on computational methods, distributed systems, creative technologies, and interdisciplinary practice.</p>
+                <div class="writing-placeholder">
+                    Writings will appear here
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 onclick="toggleSection(this)">Services</h2>
+            <div class="content">
+                <ul class="service-list">
+                    <li>
+                        <strong>Technical Writing & Documentation</strong>
+                        Whitepapers, tutorials, API documentation, educational content for technical and scientific audiences
+                    </li>
+                    <li>
+                        <strong>Systems Architecture & Development</strong>
+                        Distributed systems, IoT solutions, digital twin implementations, federated networks
+                    </li>
+                    <li>
+                        <strong>AI & Computational Modeling</strong>
+                        Machine learning pipelines, evolutionary algorithms, physics simulations, data analysis
+                    </li>
+                    <li>
+                        <strong>Creative Coding & Generative Systems</strong>
+                        Custom tools, interactive installations, procedural generation, live coding environments
+                    </li>
+                    <li>
+                        <strong>Audiovisual Production</strong>
+                        Sound design, music composition, VFX, motion graphics, post-production
+                    </li>
+                    <li>
+                        <strong>Security & Privacy Consulting</strong>
+                        Cryptographic implementations, security audits, privacy engineering, governance frameworks
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 onclick="toggleSection(this)">Contact</h2>
+            <div class="content">
+                <p><strong>Email:</strong> your@email.com</p>
+                <div class="contact-links">
+                    <a href="https://github.com/073145" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">Portfolio</a>
+                    <a href="#" target="_blank">Blog</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            Open to collaborations, commissions, and project inquiries
+        </footer>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('background');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 80;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 1.5 + 0.5;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 255, 255, 0.6)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            particles.forEach((p1, i) => {
+                particles.slice(i + 1).forEach(p2 => {
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(0, 255, 255, ${0.15 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            content.classList.toggle('collapsed');
+            header.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
