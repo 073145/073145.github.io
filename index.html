@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Computational physicist, systems architect & creative technologist">
-    <title>Portfolio</title>
+    <meta name="description" content="Computational physicist, systems architect & creative technologist portfolio.">
+    
+    <meta property="og:title" content="Weslley - Computational Physicist & Systems Architect">
+    <meta property="og:description" content="Portfolio spanning quantum algorithms, distributed systems, and creative technology.">
+    <meta property="og:image" content="https://073145.github.io/og-image.jpg"> <meta property="og:url" content="https://073145.github.io">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <title>Weslley | Portfolio</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <style>
         * {
             margin: 0;
@@ -47,17 +56,33 @@
             line-height: 1.7;
             overflow-x: hidden;
             transition: background 0.3s, color 0.3s;
-            /* Google Translate header fix */
             top: 0 !important; 
         }
 
-        /* Hides the google translate toolbar frame */
-        .skiptranslate iframe {
-            display: none !important;
-        }
+        /* Google Translate Fixes */
+        .skiptranslate iframe { display: none !important; }
         
-        body {
-            top: 0px !important; 
+        /* Email Image Protection Styles */
+        .email-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .email-img {
+            height: 1.1rem;
+            width: auto;
+            vertical-align: middle;
+            opacity: 0.9;
+            transition: filter 0.3s;
+            /* Garante que a imagem renderize nitidamente */
+            image-rendering: -webkit-optimize-contrast; 
+        }
+
+        /* INVERSÃO MÁGICA: Inverte a cor da imagem do email no modo claro */
+        body.light-mode .email-img {
+            filter: invert(1);
         }
 
         canvas {
@@ -105,7 +130,6 @@
             transition: fill 0.3s;
         }
 
-        /* Custom styling for the Google Translate Wrapper to fit the theme */
         #google_translate_element {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -116,7 +140,6 @@
             align-items: center;
         }
 
-        /* Overriding Google's ugly default styles */
         .goog-te-gadget-simple {
             background-color: transparent !important;
             border: none !important;
@@ -129,21 +152,15 @@
             font-weight: bold;
         }
 
-        /* NOVO BLOCO: Correção de cor para Dark/Light Mode */
-        
-        /* Correção para dark-mode (Padrão) */
         body:not(.light-mode) .goog-te-gadget-simple .goog-te-menu-value span,
         body:not(.light-mode) .goog-te-gadget-simple {
             color: var(--text-primary) !important;
             background-color: transparent !important;
         }
 
-        /* Garante a reversão no light-mode */
         body.light-mode .goog-te-gadget-simple .goog-te-menu-value span {
             color: var(--text-primary) !important;
         }
-
-        /* FIM DO NOVO BLOCO */
 
         .floating-shapes {
             position: fixed;
@@ -162,47 +179,17 @@
             animation: float 20s infinite ease-in-out;
         }
 
-        .shape.circle {
-            border-radius: 50%;
-        }
+        .shape.circle { border-radius: 50%; }
 
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .shape-2 {
-            width: 200px;
-            height: 200px;
-            top: 60%;
-            right: 10%;
-            animation-delay: -5s;
-        }
-
-        .shape-3 {
-            width: 150px;
-            height: 150px;
-            bottom: 20%;
-            left: 50%;
-            animation-delay: -10s;
-        }
+        .shape-1 { width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s; }
+        .shape-2 { width: 200px; height: 200px; top: 60%; right: 10%; animation-delay: -5s; }
+        .shape-3 { width: 150px; height: 150px; bottom: 20%; left: 50%; animation-delay: -10s; }
 
         @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            25% {
-                transform: translate(30px, -30px) rotate(90deg);
-            }
-            50% {
-                transform: translate(-20px, 40px) rotate(180deg);
-            }
-            75% {
-                transform: translate(40px, 20px) rotate(270deg);
-            }
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -30px) rotate(90deg); }
+            50% { transform: translate(-20px, 40px) rotate(180deg); }
+            75% { transform: translate(40px, 20px) rotate(270deg); }
         }
 
         .container {
@@ -230,11 +217,7 @@
             animation: expandLine 2s ease-out forwards;
         }
 
-        @keyframes expandLine {
-            to {
-                width: 100%;
-            }
-        }
+        @keyframes expandLine { to { width: 100%; } }
 
         h1 {
             font-size: 2.5rem;
@@ -265,12 +248,8 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.6;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
         }
 
         section {
@@ -279,45 +258,19 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        section:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        section:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        section:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        section:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        section:nth-child(5) {
-            animation-delay: 0.5s;
-        }
-
-        section:nth-child(6) {
-            animation-delay: 0.6s;
-        }
-
-        section:nth-child(7) {
-            animation-delay: 0.7s;
-        }
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+        section:nth-child(6) { animation-delay: 0.6s; }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Accessibility improvements for H2 */
         h2 {
             font-size: 1.5rem;
             font-weight: 400;
@@ -327,6 +280,12 @@
             user-select: none;
             transition: all 0.2s;
             position: relative;
+            outline: none; /* Custom focus style defined below */
+        }
+
+        h2:focus-visible {
+            color: var(--accent-primary);
+            text-shadow: 0 0 8px var(--accent-primary);
         }
 
         h2:hover {
@@ -341,9 +300,7 @@
             transition: margin-right 0.2s;
         }
 
-        h2:hover::before {
-            margin-right: 1rem;
-        }
+        h2:hover::before { margin-right: 1rem; }
 
         h2::after {
             content: '';
@@ -359,9 +316,7 @@
             transition: transform 0.3s;
         }
 
-        h2.collapsed::after {
-            transform: translateY(-50%) rotate(-90deg);
-        }
+        h2.collapsed::after { transform: translateY(-50%) rotate(-90deg); }
 
         .content {
             padding-left: 1.5rem;
@@ -373,6 +328,7 @@
         .content.collapsed {
             max-height: 0;
             opacity: 0;
+            visibility: hidden; /* Accessibility fix */
         }
 
         .domain-grid {
@@ -404,9 +360,7 @@
             transition: left 0.5s;
         }
 
-        .domain-card:hover::before {
-            left: 100%;
-        }
+        .domain-card:hover::before { left: 100%; }
 
         .domain-card:hover {
             border-color: var(--accent-primary);
@@ -437,9 +391,7 @@
             line-height: 1.5;
         }
 
-        .service-list {
-            list-style: none;
-        }
+        .service-list { list-style: none; }
 
         .service-list li {
             padding: 1rem;
@@ -463,9 +415,7 @@
             transition: color 0.3s;
         }
 
-        .service-list li:hover strong {
-            color: var(--accent-primary);
-        }
+        .service-list li:hover strong { color: var(--accent-primary); }
 
         .contact-links {
             display: flex;
@@ -501,9 +451,7 @@
             border-radius: 3px;
         }
 
-        .contact-links a:hover::after {
-            width: 100%;
-        }
+        .contact-links a:hover::after { width: 100%; }
 
         footer {
             margin-top: 5rem;
@@ -514,8 +462,7 @@
             font-size: 0.85rem;
         }
 
-        .project-placeholder,
-        .writing-placeholder {
+        .project-placeholder, .writing-placeholder {
             padding: 2rem;
             background: var(--bg-secondary);
             border: 1px dashed var(--border-color);
@@ -526,8 +473,7 @@
             transition: all 0.3s;
         }
 
-        .project-placeholder:hover,
-        .writing-placeholder:hover {
+        .project-placeholder:hover, .writing-placeholder:hover {
             border-color: var(--accent-primary);
             color: var(--accent-primary);
         }
@@ -559,47 +505,22 @@
         }
 
         @keyframes scrollPulse {
-            0%, 100% {
-                opacity: 0.3;
-            }
-            50% {
-                opacity: 0.7;
-            }
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
         }
 
         @keyframes scrollMove {
-            0% {
-                top: 8px;
-                opacity: 1;
-            }
-            100% {
-                top: 24px;
-                opacity: 0;
-            }
+            0% { top: 8px; opacity: 1; }
+            100% { top: 24px; opacity: 0; }
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            .domain-grid {
-                grid-template-columns: 1fr;
-            }
-            h2::after {
-                display: none;
-            }
-            .controls {
-                top: 1rem;
-                right: 1rem;
-                gap: 0.5rem;
-            }
-            .theme-toggle {
-                width: 45px;
-                height: 45px;
-            }
-            .scroll-indicator {
-                display: none;
-            }
+            h1 { font-size: 2rem; }
+            .domain-grid { grid-template-columns: 1fr; }
+            h2::after { display: none; }
+            .controls { top: 1rem; right: 1rem; gap: 0.5rem; }
+            .theme-toggle { width: 45px; height: 45px; }
+            .scroll-indicator { display: none; }
         }
     </style>
 </head>
@@ -632,7 +553,7 @@
         </header>
 
         <section>
-            <h2 onclick="toggleSection(this)">About</h2>
+            <h2 onclick="toggleSection(this)" onkeydown="if(event.key === 'Enter') toggleSection(this)" tabindex="0" role="button" aria-expanded="true">About</h2>
             <div class="content">
                 <p>I work at the intersection of computational science, distributed systems, and creative technology—building tools, simulations, and experiences that span from quantum algorithms to federated networks, from digital twins to generative audiovisual systems.</p>
                 <p style="margin-top: 1rem;">My practice combines rigorous technical development with experimental approaches to data, media, and emergent systems. Currently available for freelance work, technical writing, and collaborative projects.</p>
@@ -640,7 +561,7 @@
         </section>
 
         <section>
-            <h2 onclick="toggleSection(this)">Expertise</h2>
+            <h2 onclick="toggleSection(this)" onkeydown="if(event.key === 'Enter') toggleSection(this)" tabindex="0" role="button" aria-expanded="true">Expertise</h2>
             <div class="content">
                 <div class="domain-grid">
                     <div class="domain-card">
@@ -680,7 +601,7 @@
         </section>
 
         <section>
-            <h2 onclick="toggleSection(this)">Works</h2>
+            <h2 onclick="toggleSection(this)" onkeydown="if(event.key === 'Enter') toggleSection(this)" tabindex="0" role="button" aria-expanded="true">Works</h2>
             <div class="content">
                 <p>Selected projects demonstrating applied research, systems development, and creative implementations.</p>
                 <div class="project-placeholder">
@@ -690,7 +611,7 @@
         </section>
 
         <section>
-            <h2 onclick="toggleSection(this)">Writing</h2>
+            <h2 onclick="toggleSection(this)" onkeydown="if(event.key === 'Enter') toggleSection(this)" tabindex="0" role="button" aria-expanded="true">Writing</h2>
             <div class="content">
                 <p>Technical articles, essays, and documentation on computational methods, distributed systems, creative technologies, and interdisciplinary practice.</p>
                 <div class="writing-placeholder">
@@ -700,7 +621,7 @@
         </section>
 
         <section>
-            <h2 onclick="toggleSection(this)">Services</h2>
+            <h2 onclick="toggleSection(this)" onkeydown="if(event.key === 'Enter') toggleSection(this)" tabindex="0" role="button" aria-expanded="true">Services</h2>
             <div class="content">
                 <ul class="service-list">
                     <li>
@@ -732,14 +653,18 @@
         </section>
 
         <section>
-            <h2 onclick="toggleSection(this)">Contact</h2>
+            <h2 onclick="toggleSection(this)" onkeydown="if(event.key === 'Enter') toggleSection(this)" tabindex="0" role="button" aria-expanded="true">Contact</h2>
             <div class="content">
-                <p><strong>Email:</strong> @yahoo.com</p>
+                <p class="email-container">
+                    <strong>Email:</strong> 
+                    <img src="email.png" alt="Contact Email" class="email-img">
+                </p>
+                
                 <div class="contact-links">
-                    <a href="https://github.com/073145" target="_blank">GitHub</a>
-                    <a href="#" target="_blank">LinkedIn</a>
-                    <a href="#" target="_blank">Portfolio</a>
-                    <a href="#" target="_blank">Blog</a>
+                    <a href="https://github.com/073145" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Portfolio</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Blog</a>
                 </div>
             </div>
         </section>
@@ -766,8 +691,9 @@
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
             const icon = document.getElementById('theme-icon');
+            const isLight = document.body.classList.contains('light-mode');
             
-            if (document.body.classList.contains('light-mode')) {
+            if (isLight) {
                 icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
                 localStorage.setItem('theme', 'light');
             } else {
@@ -782,7 +708,7 @@
             document.getElementById('theme-icon').innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
         }
 
-        // Background animation (Optimized slightly with resize debounce logic suggestion)
+        // Background animation
         const canvas = document.getElementById('background');
         const ctx = canvas.getContext('2d');
         
@@ -834,7 +760,16 @@
             particles.push(new Particle());
         }
 
+        // PERFORMANCE: Verifica se a aba está visível para pausar a animação
+        let isTabActive = true;
+        document.addEventListener('visibilitychange', () => {
+            isTabActive = !document.hidden;
+            if (isTabActive) animate();
+        });
+
         function animate() {
+            if (!isTabActive) return;
+
             ctx.clearRect(0, 0, width, height);
 
             particles.forEach(particle => {
@@ -842,13 +777,13 @@
                 particle.draw();
             });
 
-            // Distance check (O(n^2) - heavy for mobile, but ok for 100 particles)
+            // Distance check
             particles.forEach((p1, i) => {
                 for (let j = i + 1; j < particles.length; j++) {
                     const p2 = particles[j];
                     const dx = p1.x - p2.x;
                     const dy = p1.y - p2.y;
-                    const distanceSq = dx * dx + dy * dy; // Optimization: avoid sqrt
+                    const distanceSq = dx * dx + dy * dy;
 
                     if (distanceSq < 22500) { // 150 * 150
                         const distance = Math.sqrt(distanceSq);
@@ -874,8 +809,17 @@
         // Section toggle
         function toggleSection(header) {
             const content = header.nextElementSibling;
-            content.classList.toggle('collapsed');
-            header.classList.toggle('collapsed');
+            const isCollapsed = content.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                content.classList.remove('collapsed');
+                header.classList.remove('collapsed');
+                header.setAttribute('aria-expanded', 'true');
+            } else {
+                content.classList.add('collapsed');
+                header.classList.add('collapsed');
+                header.setAttribute('aria-expanded', 'false');
+            }
         }
 
         // Hide scroll indicator on scroll
