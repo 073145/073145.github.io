@@ -1,4 +1,4 @@
-name: Deploy Portfolio
+name: Deploy Nuxt Portfolio
 
 on:
   push:
@@ -30,13 +30,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      # MUDANÇA 1: Usamos 'generate' em vez de 'build'
+      # Isso cria os arquivos HTML estáticos
+      - name: Build Static Site
+        run: npm run generate
 
+      # MUDANÇA 2: A pasta do Nuxt 3 é '.output/public', não 'dist'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./.output/public
 
   deploy:
     environment:
