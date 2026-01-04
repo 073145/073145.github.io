@@ -140,7 +140,7 @@ const t = {
     ],
     lab_list: [
       { title: 'Electronic Circuits', desc: 'Oscillators and active filters research for audio and signal processing.', icon: Cpu, link: 'https://github.com/073145/substrate-blueprints' },
-      { title: 'Mathematical Viz', desc: 'Real-time geometric algorithms and algorithmic rendering.', icon: BrainCircuit, link: 'https://github.com/073145/gnu_octave-lib' },
+      { title: 'Mathematical Viz', desc: 'Numerical modeling, linear algebra, and dynamic systems simulation.', icon: BrainCircuit, link: 'https://github.com/073145/gnu_octave-lib' },
       { title: 'Creative Coding Snippets', desc: 'Generative algorithms, shaders, and audiovisual processing modules for real-time performance.', icon: Zap, link: 'https://github.com/073145/code-aesthetics' },
       { title: 'Game Engine Core', desc: 'C++ prototypes: modeling, rendering, and rigid body physics.', icon: Terminal, link: 'https://github.com/073145/gamejam-collab' }
     ],
@@ -189,7 +189,7 @@ const t = {
     ],
     lab_list: [
       { title: 'Circuitos Eletrônicos', desc: 'Osciladores e filtros ativos para tratamento de sinais e áudio.', icon: Cpu, link: 'https://github.com/073145/substrate-blueprints' },
-      { title: 'Visualização Matemática', desc: 'Algoritmos geométricos e funções matemáticas renderizadas em tempo real.', icon: BrainCircuit, link: 'https://github.com/073145/gnu_octave-lib' },
+      { title: 'Visualização Matemática', desc: 'Modelagem numérica, álgebra linear e simulação de sistemas dinâmicos.', icon: BrainCircuit, link: 'https://github.com/073145/gnu_octave-lib' },
       { title: 'Creative Coding Snippets', desc: 'Algoritmos generativos, shaders e módulos de processamento audiovisual em tempo real.', icon: Zap, link: 'https://github.com/073145/code-aesthetics' },
       { title: 'Engine de Jogos (C++)', desc: 'Protótipos focados em modelagem, renderização e física de corpos rígidos.', icon: Terminal, link: 'https://github.com/073145/gamejam-collab' }
     ],
@@ -238,7 +238,7 @@ const t = {
     ],
     lab_list: [
       { title: 'Circuitos Electrónicos', desc: 'Investigación en osciladores y filtros activos para señales.', icon: Cpu, link: 'https://github.com/073145/substrate-blueprints' },
-      { title: 'Visualización Matemática', desc: 'Algoritmos geométricos y funciones renderizadas en tiempo real.', icon: BrainCircuit, link: 'https://github.com/073145/gnu_octave-lib' },
+      { title: 'Modelado numérico, álgebra lineal y simulación de sistemas dinámicos.', icon: BrainCircuit, link: 'https://github.com/073145/gnu_octave-lib' },
       { title: 'Creative Coding Snippets', desc: 'Algoritmos generativos, shaders y módulos de procesamiento audiovisual en tiempo real.', icon: Zap, link: 'https://github.com/073145/code-aesthetics' },
       { title: 'Motor de Jogos (C++)', desc: 'Prototipos de modelado, renderizado y física de cuerpos rígidos.', icon: Terminal, link: 'https://github.com/073145/gamejam-collab' }
     ],
