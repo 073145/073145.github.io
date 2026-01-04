@@ -238,7 +238,7 @@ const t = {
     ],
     lab_list: [
       { title: 'Circuitos Electrónicos', desc: 'Investigación en osciladores y filtros activos para señales.', icon: Cpu, link: 'https://github.com/073145/substrate-blueprints' },
-      { title: 'Visualización Matemática', desc: Modelado numérico, álgebra lineal y simulación de sistemas dinámicos.', icon: BrainCircuit, link: 'https://github.com/073145/gnu_octave-lib' },
+      { title: 'Visualización Matemática', desc: 'Modelado numérico, álgebra lineal y simulación de sistemas dinámicos.', icon: BrainCircuit, link: 'https://github.com/073145/gnu_octave-lib' },
       { title: 'Creative Coding Snippets', desc: 'Algoritmos generativos, shaders y módulos de procesamiento audiovisual en tiempo real.', icon: Zap, link: 'https://github.com/073145/code-aesthetics' },
       { title: 'Motor de Jogos (C++)', desc: 'Prototipos de modelado, renderizado y física de cuerpos rígidos.', icon: Terminal, link: 'https://github.com/073145/gamejam-collab' }
     ],
