@@ -109,7 +109,7 @@ const t = {
     nav: { home: 'Home', projects: 'Projects', playground: 'Labs', writing: 'Writing', about: 'About me', contact: 'Contact' },
     hero: {
       badge: 'STATUS: ONLINE // AVAILABLE FOR CONTRACTS',
-      role: 'Computational Physicist and Creative Technologist.',
+      role: 'Design Engineer | Creative Technologist | Computational Physicist',
       btn_explore: 'View Projects', btn_cv: 'Resume', btn_contact: 'Get in touch', main_title: 'WESLLEY SOARES'
     },
     stats: { projects: 'Tech Projects', exp: 'Years Tech Exp.', cert: 'Certifications', progress: 'Degree Progress' },
@@ -158,7 +158,7 @@ const t = {
     nav: { home: 'Início', projects: 'Projetos', playground: 'Labs', writing: 'Artigos', about: 'Sobre mim', contact: 'Contato' },
     hero: {
       badge: 'STATUS: ONLINE // DISPONÍVEL PARA PROJETOS',
-      role: 'Fisico Computacional e Tecnólogo Criativo.',
+      role: 'Design Engineer | Creative Technologist | Computational Physicist',
       btn_explore: 'Ver Projetos', btn_cv: 'Currículo', btn_contact: 'Entre em contato', main_title: 'WESLLEY SOARES'
     },
     stats: { projects: 'Projetos Tech', exp: 'Anos Exp. Técnica', cert: 'Certificações', progress: 'Progresso do Curso' },
@@ -207,7 +207,7 @@ const t = {
     nav: { home: 'Inicio', projects: 'Proyectos', playground: 'Labs', writing: 'Artículos', about: 'Sobre mí', contact: 'Contacto' },
     hero: {
       badge: 'ESTADO: ONLINE // DISPONIBLE PARA PROYECTOS',
-      role: 'Físico computacional y Tecnólogo Creativo.',
+      role: 'Design Engineer | Creative Technologist | Computational Physicist',
       btn_explore: 'Ver Proyectos', btn_cv: 'Currículum', btn_contact: 'Contactar', main_title: 'WESLLEY SOARES'
     },
     stats: { projects: 'Proyectos Tech', exp: 'Años Exp. Técnica', cert: 'Certificaciones', progress: 'Progreso del Curso' },
