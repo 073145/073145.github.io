@@ -1,0 +1,24 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependências (A "Fábrica")
+node_modules/
+
+# Build (O "Carro" compilado)
+dist/
+dist-ssr/
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs
+*.njsproj
+*.sln
+*.sw?
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db

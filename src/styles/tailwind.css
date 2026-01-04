@@ -1,0 +1,10 @@
+/* src/styles/tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Força o fundo preto caso o Tailwind demore a carregar */
+body {
+  background-color: #020617; 
+  color: #ffffff;
+}
